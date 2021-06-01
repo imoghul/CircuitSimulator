@@ -17,7 +17,6 @@ public class Main extends JPanel implements ActionListener {
     // Fields
 
     public void paintComponent(Graphics g) {
-
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -30,12 +29,12 @@ public class Main extends JPanel implements ActionListener {
         Main.panel.addMouseListener(new MouseListen());
         JTextField textField = new JTextField();
         textField.addKeyListener(new KeyListen());
-        window.add(textField);
+        Main.window.add(textField);
         Main.window.setBounds(0, 0, Values.displayW, Values.displayH);
         Main.c.add(panel);
-        Values.setup(Main.window, Main.c);
         Main.window.setVisible(true);
         Main.window.setResizable(true);
+        Values.setup(Main.window, Main.c);
         Main.clock.start();
     }
 

@@ -18,15 +18,29 @@ import Graphics.Mouse;
 public class Values {
 
     public static int displayW = 1500, displayH = 1000, timerSpeed = 15;
-
+    public enum CircuitElements {
+        WIRE,RESISTOR, VOLTAGE_SOURCE, CURRENT_SOURCE, VCVS, VCCS, CCVS, CCCS;
+    }
+    public static CircuitElements currentItem;
     // Objects
     public static JToolBar toolBar = new JToolBar();
+    //
     public static JButton fileButton = new JButton("File");
     public static JButton editButton = new JButton("Edit");
+    public static JButton insertButton = new JButton("Insert");
+    //
     public static JPopupMenu filePopup = new JPopupMenu();
     public static JPopupMenu editPopup = new JPopupMenu();
-    public static JMenuItem option1 = new JMenuItem("option 1");
-    public static JMenuItem option2 = new JMenuItem("option 2");
+    public static JPopupMenu insertPopup = new JPopupMenu();
+    //
+    public static JMenuItem wireItem = new JMenuItem("Wire");
+    public static JMenuItem resistorItem = new JMenuItem("Resistor");
+    public static JMenuItem vSourceItem = new JMenuItem("Voltage Source");
+    public static JMenuItem cSourceItem = new JMenuItem("Current Source");
+    public static JMenuItem vcvsSourceItem = new JMenuItem("VCVS");
+    public static JMenuItem vccsSourceItem = new JMenuItem("VCCS");
+    public static JMenuItem ccvsSourceItem = new JMenuItem("CCVS");
+    public static JMenuItem cccsSourceItem = new JMenuItem("CCCS");
     //
     public static Mouse mouse = new Mouse(Values.timerSpeed);
 
@@ -39,11 +53,17 @@ public class Values {
         // add toolbar buttons
         Values.toolBar.add(Values.fileButton);
         Values.toolBar.add(Values.editButton);
+        Values.toolBar.add(Values.insertButton);
 
-        // add buttons options to each toolbar
-        Values.filePopup.add(option1);
-        Values.filePopup.add(option2);
-
+        // add buttons options to each toolbar popup
+        Values.insertPopup.add(Values.wireItem);
+        Values.insertPopup.add(Values.resistorItem);
+        Values.insertPopup.add(Values.vSourceItem);
+        Values.insertPopup.add(Values.cSourceItem);
+        Values.insertPopup.add(Values.vcvsSourceItem);
+        Values.insertPopup.add(Values.vccsSourceItem);
+        Values.insertPopup.add(Values.ccvsSourceItem);
+        Values.insertPopup.add(Values.cccsSourceItem);
         // display pop ups
         Values.fileButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -55,19 +75,53 @@ public class Values {
                 Values.showPopup(window, e, Values.editPopup);
             }
         });
+        Values.insertButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Values.showPopup(window, e, Values.insertPopup);
+            }
+        });
+
         // action at each option
-        Values.option1.addActionListener(new ActionListener() {
+        Values.wireItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("option 1 clicked");
+                Values.currentItem = CircuitElements.WIRE;
+            }
+        }); 
+        Values.resistorItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Values.currentItem = CircuitElements.RESISTOR;
+            }
+        }); 
+        Values.vSourceItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Values.currentItem = CircuitElements.VOLTAGE_SOURCE;
             }
         });
-        Values.option2.addActionListener(new ActionListener() {
+        Values.cSourceItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("option 2 clicked");
+                Values.currentItem = CircuitElements.CURRENT_SOURCE;
             }
-        });
-
-
+        });  
+        Values.vcvsSourceItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Values.currentItem = CircuitElements.VCVS;
+            }
+        }); 
+        Values.vccsSourceItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Values.currentItem = CircuitElements.VCCS;
+            }
+        }); 
+        Values.ccvsSourceItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Values.currentItem = CircuitElements.CCVS;
+            }
+        }); 
+        Values.cccsSourceItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Values.currentItem = CircuitElements.CCCS;
+            }
+        }); 
     }
 
     private static void showPopup(Component c, ActionEvent ae, JPopupMenu menu) {
