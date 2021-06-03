@@ -19,7 +19,7 @@ public class Values {
 
     public static int displayW = 1500, displayH = 1000, timerSpeed = 15;
     public enum CircuitElements {
-        WIRE,RESISTOR, VOLTAGE_SOURCE, CURRENT_SOURCE, VCVS, VCCS, CCVS, CCCS;
+        WIRE, RESISTOR, VOLTAGE_SOURCE, CURRENT_SOURCE, VCVS, VCCS, CCVS, CCCS;
     }
     public static CircuitElements currentItem;
     // Objects
@@ -64,6 +64,7 @@ public class Values {
         Values.insertPopup.add(Values.vccsSourceItem);
         Values.insertPopup.add(Values.ccvsSourceItem);
         Values.insertPopup.add(Values.cccsSourceItem);
+
         // display pop ups
         Values.fileButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -86,12 +87,12 @@ public class Values {
             public void actionPerformed(ActionEvent e) {
                 Values.currentItem = CircuitElements.WIRE;
             }
-        }); 
+        });
         Values.resistorItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Values.currentItem = CircuitElements.RESISTOR;
             }
-        }); 
+        });
         Values.vSourceItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Values.currentItem = CircuitElements.VOLTAGE_SOURCE;
@@ -101,27 +102,27 @@ public class Values {
             public void actionPerformed(ActionEvent e) {
                 Values.currentItem = CircuitElements.CURRENT_SOURCE;
             }
-        });  
+        });
         Values.vcvsSourceItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Values.currentItem = CircuitElements.VCVS;
             }
-        }); 
+        });
         Values.vccsSourceItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Values.currentItem = CircuitElements.VCCS;
             }
-        }); 
+        });
         Values.ccvsSourceItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Values.currentItem = CircuitElements.CCVS;
             }
-        }); 
+        });
         Values.cccsSourceItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Values.currentItem = CircuitElements.CCCS;
             }
-        }); 
+        });
     }
 
     private static void showPopup(Component c, ActionEvent ae, JPopupMenu menu) {

@@ -6,6 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Features.SimulatorRunner;
 
 public class Main extends JPanel implements ActionListener {
 
@@ -17,6 +18,7 @@ public class Main extends JPanel implements ActionListener {
     // Fields
 
     public void paintComponent(Graphics g) {
+        SimulatorRunner.run(g);
     }
 
     public void actionPerformed(ActionEvent e) {
