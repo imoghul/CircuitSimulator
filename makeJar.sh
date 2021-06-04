@@ -1,8 +1,7 @@
 echo "Main-Class: Main" > manifest.txt
-javac *.java
-javac Graphics/*.java
-javac Features/*.java
-javac Listeners/*.java
-jar cvfm CircuitSimulator.jar manifest.txt Main.class *.class Graphics/*.class Features/*.class Listeners/*.class
+javac *.java 
+javac */*.java
+jar cvfm CircuitSimulator.jar manifest.txt *.class */*.class
 cp CircuitSimulator.jar ~/desktop/CircuitSimulator.jar
+find . -name "*.class" -delete
 rm manifest.txt

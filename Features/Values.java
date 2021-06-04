@@ -1,4 +1,5 @@
 package Features;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -8,18 +9,32 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
 import java.awt.Point;
+import java.awt.Image;
+import javax.swing.*;
+import java.awt.image.*;
+import javax.imageio.*;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.*;
+
+import java.awt.geom.AffineTransform;
 
 import Graphics.Mouse;
-
+import Elements.Element;
+import Elements.Node;
 
 public class Values {
 
     public static int displayW = 1500, displayH = 1000, timerSpeed = 15;
+    public static Color backgroundColor = Color.black;
+    public static ArrayList<Element> elements = new ArrayList<>();
+    public static ArrayList<Node> nodes = new ArrayList<>();;
     public enum CircuitElements {
-        WIRE, RESISTOR, VOLTAGE_SOURCE, CURRENT_SOURCE, VCVS, VCCS, CCVS, CCCS;
+        WIRE, RESISTOR, VOLTAGE_SOURCE, CURRENT_SOURCE, VCVS, VCCS, CCVS, CCCS, OPAMP;
     }
     public static CircuitElements currentItem;
     // Objects
@@ -41,8 +56,11 @@ public class Values {
     public static JMenuItem vccsSourceItem = new JMenuItem("VCCS");
     public static JMenuItem ccvsSourceItem = new JMenuItem("CCVS");
     public static JMenuItem cccsSourceItem = new JMenuItem("CCCS");
+    public static JMenuItem opampItem = new JMenuItem("Op Amp");
     //
     public static Mouse mouse = new Mouse(Values.timerSpeed);
+    //
+    public static BufferedImage resistorImage;
 
     public static void setup(Component window, Container container) {
         // toolbar options
@@ -64,6 +82,7 @@ public class Values {
         Values.insertPopup.add(Values.vccsSourceItem);
         Values.insertPopup.add(Values.ccvsSourceItem);
         Values.insertPopup.add(Values.cccsSourceItem);
+        Values.insertPopup.add(Values.opampItem);
 
         // display pop ups
         Values.fileButton.addActionListener(new ActionListener() {
@@ -123,6 +142,15 @@ public class Values {
                 Values.currentItem = CircuitElements.CCCS;
             }
         });
+        Values.opampItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Values.currentItem = CircuitElements.OPAMP;
+            }
+        });
+
+        try {
+            Values.resistorImage = ImageIO.read(new File("./symbols/resistor.png"));
+        } catch(IOException e) {}
     }
 
     private static void showPopup(Component c, ActionEvent ae, JPopupMenu menu) {

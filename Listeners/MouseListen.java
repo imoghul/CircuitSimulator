@@ -27,12 +27,13 @@ public class MouseListen implements MouseListener {
     @Override
     public void mousePressed(MouseEvent arg0) {
         Values.mouse.setIsPressed(true);// Values.mousePressed = true;
-
+        Values.mouse.setIsClicked(true);
     }
 
     @Override
     public void mouseReleased(MouseEvent arg0) {
         Values.mouse.setIsPressed(false);// Values.mousePressed = false;
+        Values.mouse.setisReleased(true);
         Values.mouse.clear();
     }
 

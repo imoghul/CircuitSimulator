@@ -18,6 +18,7 @@ public class Main extends JPanel implements ActionListener {
     // Fields
 
     public void paintComponent(Graphics g) {
+        Main.update();
         SimulatorRunner.run(g);
     }
 
@@ -26,7 +27,7 @@ public class Main extends JPanel implements ActionListener {
     }
 
     public static void main(String[] argv) throws Exception {
-        Main.panel.setBackground(Color.black);
+        Main.panel.setBackground(Values.backgroundColor);
         Main.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Main.panel.addMouseListener(new MouseListen());
         JTextField textField = new JTextField();
