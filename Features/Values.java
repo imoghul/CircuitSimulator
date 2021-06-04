@@ -30,6 +30,7 @@ import Elements.Node;
 public class Values {
 
     public static int displayW = 1500, displayH = 1000, timerSpeed = 15;
+    public static final int nodesW=20,nodesH=15;
     public static Color backgroundColor = Color.black;
     public static ArrayList<Element> elements = new ArrayList<>();
     public static ArrayList<Node> nodes = new ArrayList<>();;
@@ -59,8 +60,6 @@ public class Values {
     public static JMenuItem opampItem = new JMenuItem("Op Amp");
     //
     public static Mouse mouse = new Mouse(Values.timerSpeed);
-    //
-    public static BufferedImage resistorImage;
 
     public static void setup(Component window, Container container) {
         // toolbar options
@@ -148,9 +147,10 @@ public class Values {
             }
         });
 
-        try {
-            Values.resistorImage = ImageIO.read(new File("./symbols/resistor.png"));
-        } catch(IOException e) {}
+        for(int i = 0 ;i<nodesW*nodesH;++i){
+            nodes.add(new Node());
+        }
+
     }
 
     private static void showPopup(Component c, ActionEvent ae, JPopupMenu menu) {

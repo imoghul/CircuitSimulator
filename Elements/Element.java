@@ -7,7 +7,7 @@ import java.awt.Graphics;
 public abstract class Element extends Drawer {
     protected double V, I, R, P;
     protected double x1, y1, x2, y2;
-    protected Terminal tA, tB;
+    public Terminal tA, tB;
     public Element(Settings s, double x1, double y1, double x2, double y2) {
         super(s);
         tA = new Terminal(x1, y1);
