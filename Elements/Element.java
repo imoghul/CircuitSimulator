@@ -3,6 +3,7 @@ package Elements;
 import Graphics.Drawer;
 import Graphics.Settings;
 import java.awt.Graphics;
+import java.awt.Point;
 
 public abstract class Element extends Drawer {
     protected double V, I, R, P;
@@ -50,6 +51,32 @@ public abstract class Element extends Drawer {
         tB.y = y2;
     }
 
+    public double getMidX() {
+        return ((this.x1 + this.x2) / 2.0);
+    }
+
+    public double getMidY() {
+        return ((this.y1 + this.y2) / 2.0);
+    }
+
+    public double getTheta() {
+        return Math.atan2(getY2() - getY1(), getX2() - getX1());
+    }
+
     public abstract void draw(Graphics g);
 
+    public void drawLines(Graphics g, double gap) {
+        double dx = (gap / 2) * Math.cos(getTheta());
+        double dy = (gap / 2) * Math.sin(getTheta());
+        g.drawLine((int)x1, (int)y1, (int)(getMidX() - dx), (int)(getMidY() - dy));
+        g.drawLine((int)x2, (int)y2, (int)(getMidX() + dx), (int)(getMidY() + dy));
+    }
+
+    protected Point rotatePoint(double x, double y, double theta) {
+        return new Point((int)(x * Math.cos(theta) - y * Math.sin(theta)), (int)(y * Math.cos(theta) + x * Math.sin(theta)));
+    }
+
+    protected double getDx(double gap){return (gap / 2) * Math.cos(getTheta());}
+
+    protected double getDy(double gap){return (gap / 2) * Math.sin(getTheta());}
 }

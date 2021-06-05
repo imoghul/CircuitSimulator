@@ -13,9 +13,9 @@ public class SimulatorRunner {
     public static void run(Graphics g) {
 
         // update nodes positions
-        for(int i = 0 ;i<Values.nodesH*Values.nodesW;++i){
-            Values.nodes.get(i).setX((i%Values.nodesW)*(Values.displayW/Values.nodesW)+.5*(Values.displayW/Values.nodesW));
-            Values.nodes.get(i).setY((i/Values.nodesW)*(Values.displayH/Values.nodesH)+.5*(Values.displayH/Values.nodesH));
+        for(int i = 0 ; i < Values.nodesH * Values.nodesW; ++i) {
+            Values.nodes.get(i).setX((i % Values.nodesW) * (Values.displayW / Values.nodesW) + .5 * (Values.displayW / Values.nodesW));
+            Values.nodes.get(i).setY((i / Values.nodesW) * (Values.displayH / Values.nodesH) + .5 * (Values.displayH / Values.nodesH));
             Values.nodes.get(i).draw(g);
         }
 
@@ -31,7 +31,9 @@ public class SimulatorRunner {
             if(Values.currentItem == CircuitElements.WIRE) {
                 Values.elements.add(new Wire(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "wire", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
             } else if(Values.currentItem == CircuitElements.RESISTOR) {
-                Values.elements.add(new Resistor(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "wire", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
+                Values.elements.add(new Resistor(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "resistor", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
+            } else if(Values.currentItem == CircuitElements.VOLTAGE_SOURCE) {
+                Values.elements.add(new VoltageSource(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "voltage source", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
             }
         } else if(Values.mouse.getIsPressed()) {
             SimulatorRunner.endX = Values.mouse.getX();
@@ -43,14 +45,14 @@ public class SimulatorRunner {
         // snap x andd y values to a node
         Node begin = SimulatorRunner.snapToNode(beginX, beginY);
         Node end = SimulatorRunner.snapToNode(endX, endY);
-        beginX=begin.getX();
-        beginY=begin.getY();
+        beginX = begin.getX();
+        beginY = begin.getY();
         endX = end.getX();
         endY = end.getY();
         SimulatorRunner.snapToNode(Values.mouse.getX(), Values.mouse.getY()).emphasize(g);
 
         // draw the element
-        if(isActive && !(beginX==endX && beginY==endY)) {
+        if(isActive && !(beginX == endX && beginY == endY)) {
             Element temp = Values.elements.get(Values.elements.size() - 1);
             temp.setX1(SimulatorRunner.beginX);
             temp.setY1(SimulatorRunner.beginY);
@@ -63,24 +65,30 @@ public class SimulatorRunner {
 
         for(int i = 0 ; i < Values.elements.size(); ++i) {
             Values.elements.get(i).draw(g);
+            // Values.elements.get(i).tA.n.emphasize(g);
+            // Values.elements.get(i).tB.n.emphasize(g);
         }
     }
 
-    private static Node snapToNode(double x, double y){
+    private static Node snapToNode(double x, double y) {
         double distances[] = new double[Values.nodes.size()];
-        for(int i = 0;i<distances.length;++i){
-            distances[i] = Math.sqrt(Math.pow(x-Values.nodes.get(i).getX(),2)+Math.pow(y-Values.nodes.get(i).getY(),2));
+
+        for(int i = 0; i < distances.length; ++i) {
+            distances[i] = Math.sqrt(Math.pow(x - Values.nodes.get(i).getX(), 2) + Math.pow(y - Values.nodes.get(i).getY(), 2));
         }
-        double min=distances[0];
-        int indexMin=0;
-        for(int i = 1;i<distances.length;++i){
-            if(distances[i]<min){
+
+        double min = distances[0];
+        int indexMin = 0;
+
+        for(int i = 1; i < distances.length; ++i) {
+            if(distances[i] < min) {
                 min = distances[i];
-                indexMin=i;
+                indexMin = i;
             }
         }
+
         return Values.nodes.get(indexMin);
     }
 
-    
+
 }

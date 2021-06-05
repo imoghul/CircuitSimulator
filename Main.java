@@ -36,7 +36,7 @@ public class Main extends JPanel implements ActionListener {
         Main.window.setBounds(0, 0, Values.displayW, Values.displayH);
         Main.c.add(panel);
         Main.window.setVisible(true);
-        Main.window.setResizable(true);
+        Main.window.setResizable(false);
         Values.setup(Main.window, Main.c);
         Main.clock.start();
     }

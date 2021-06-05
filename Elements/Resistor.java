@@ -20,9 +20,9 @@ public class Resistor extends Element {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.white);
-        int x = (int)((this.x1 + this.x2) / 2.0);
-        int y = (int)((this.y1 + this.y2) / 2.0);
-        double theta = Math.atan2(getY2() - getY1(), getX2() - getX1());
+        int x = (int)this.getMidX();
+        int y = (int)this.getMidY();
+        double theta = this.getTheta();
 
         Point one = rotatePoint(xone, yone, theta);
         Point two = rotatePoint(xtwo, ytwo, theta);
@@ -41,8 +41,5 @@ public class Resistor extends Element {
         g.drawLine(four.x + x, four.y + y, five.x + x, five.y + y);
         g.drawLine(five.x + x, five.y + y, six.x + x, six.y + y);
         g.drawLine(six.x + x, six.y + y, seven.x + x, seven.y + y);
-    }
-    private Point rotatePoint(double x, double y, double theta) {
-        return new Point((int)(x * Math.cos(theta) - y * Math.sin(theta)), (int)(y * Math.cos(theta) + x * Math.sin(theta)));
     }
 }

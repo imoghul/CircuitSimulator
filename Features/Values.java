@@ -30,7 +30,7 @@ import Elements.Node;
 public class Values {
 
     public static int displayW = 1500, displayH = 1000, timerSpeed = 15;
-    public static final int nodesW=20,nodesH=15;
+    public static final int nodesW = 20, nodesH = 15;
     public static Color backgroundColor = Color.black;
     public static ArrayList<Element> elements = new ArrayList<>();
     public static ArrayList<Node> nodes = new ArrayList<>();;
@@ -147,7 +147,7 @@ public class Values {
             }
         });
 
-        for(int i = 0 ;i<nodesW*nodesH;++i){
+        for(int i = 0 ; i < nodesW * nodesH; ++i) {
             nodes.add(new Node());
         }
 
