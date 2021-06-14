@@ -33,7 +33,10 @@ public class SimulatorRunner {
             } else if(Values.currentItem == CircuitElements.RESISTOR) {
                 Values.elements.add(new Resistor(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "resistor", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
             } else if(Values.currentItem == CircuitElements.VOLTAGE_SOURCE) {
-                Values.elements.add(new VoltageSource(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "voltage source", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
+                Values.elements.add(new VoltageSource(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "voltage_source", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
+            }
+            else if(Values.currentItem == CircuitElements.CURRENT_SOURCE) {
+                Values.elements.add(new CurrentSource(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "voltage_source", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
             }
         } else if(Values.mouse.getIsPressed()) {
             SimulatorRunner.endX = Values.mouse.getX();
