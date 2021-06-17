@@ -34,9 +34,8 @@ public class SimulatorRunner {
                 Values.elements.add(new Resistor(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "resistor", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
             } else if(Values.currentItem == CircuitElements.VOLTAGE_SOURCE) {
                 Values.elements.add(new VoltageSource(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "voltage_source", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
-            }
-            else if(Values.currentItem == CircuitElements.CURRENT_SOURCE) {
-                Values.elements.add(new CurrentSource(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "voltage_source", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
+            } else if(Values.currentItem == CircuitElements.CURRENT_SOURCE) {
+                Values.elements.add(new CurrentSource(new Settings(Values.mouse.getX(), Values.mouse.getY(), 1, 0, 0, "current_source", Values.timerSpeed), SimulatorRunner.beginX, SimulatorRunner.beginY, SimulatorRunner.endX, SimulatorRunner.endY));
             }
         } else if(Values.mouse.getIsPressed()) {
             SimulatorRunner.endX = Values.mouse.getX();
@@ -68,8 +67,8 @@ public class SimulatorRunner {
 
         for(int i = 0 ; i < Values.elements.size(); ++i) {
             Values.elements.get(i).draw(g);
-            // Values.elements.get(i).tA.n.emphasize(g);
-            // Values.elements.get(i).tB.n.emphasize(g);
+            Values.elements.get(i).tA.n.emphasize(g);
+            Values.elements.get(i).tB.n.emphasize(g);
         }
     }
 

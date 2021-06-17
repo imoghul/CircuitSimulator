@@ -20,6 +20,7 @@ public class Main extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         Main.update();
         SimulatorRunner.run(g);
+        //System.out.println(Values.displayW + ", " + Values.displayH);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -36,7 +37,7 @@ public class Main extends JPanel implements ActionListener {
         Main.window.setBounds(0, 0, Values.displayW, Values.displayH);
         Main.c.add(panel);
         Main.window.setVisible(true);
-        Main.window.setResizable(false);
+        Main.window.setResizable(true);
         Values.setup(Main.window, Main.c);
         Main.clock.start();
     }

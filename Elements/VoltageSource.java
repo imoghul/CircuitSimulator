@@ -15,9 +15,9 @@ public class VoltageSource extends Element {
     }
     public void draw(Graphics g) {
         g.setColor(Color.white);
-        drawLines(g, innerCircleR*2);
-        new Text("+",(int)(getMidX() + getDx(innerCircleR*1.25)),(int)(getMidY() + getDy(innerCircleR*1.25)),Values.timerSpeed).drawCentered(g);
-        new Text("-",(int)(getMidX() - getDx(innerCircleR*1.25)),(int)(getMidY() - getDy(innerCircleR*1.25)),Values.timerSpeed).drawCentered(g);
-        g.drawOval((int)(getMidX()-innerCircleR), (int)(getMidY()-innerCircleR), innerCircleR*2, innerCircleR*2);
+        drawLines(g, innerCircleR * 2);
+        new Text("+", (int)(getMidX() + getDx(innerCircleR * 1.25)), (int)(getMidY() + getDy(innerCircleR * 1.25)), Values.timerSpeed).drawCentered(g);
+        new Text("-", (int)(getMidX() - getDx(innerCircleR * 1.25)), (int)(getMidY() - getDy(innerCircleR * 1.25)), Values.timerSpeed).drawCentered(g);
+        g.drawOval((int)(getMidX() - innerCircleR), (int)(getMidY() - innerCircleR), innerCircleR * 2, innerCircleR * 2);
     }
 }

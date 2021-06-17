@@ -29,7 +29,7 @@ import Elements.Node;
 
 public class Values {
 
-    public static int displayW = 1500, displayH = 1000, timerSpeed = 15;
+    public static int displayW = 1700, displayH = 1100, timerSpeed = 15;
     public static final int nodesW = 20, nodesH = 15;
     public static Color backgroundColor = Color.black;
     public static ArrayList<Element> elements = new ArrayList<>();
